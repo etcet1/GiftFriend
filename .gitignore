@@ -30,3 +30,10 @@ proguard/
 *.ipr
 *.iws
 .idea/
+/app
+/gradle
+/build.gradle
+/gradlew.bat
+/gradlew
+/settings.gradle
+/import-summary.txt
