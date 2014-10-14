@@ -26,4 +26,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="customBtnColor">
+        <item name="android:background">#06F</item>
+        <item name="android:padding">10dp</item>
+    </style>
+    
 </resources>

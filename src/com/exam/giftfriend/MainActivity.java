@@ -24,7 +24,9 @@ public class MainActivity extends FragmentActivity
 
             EventsListFragment eventsListFragment = new EventsListFragment();
             eventsListFragment.setArguments(getIntent().getExtras());
-
+            
+            System.out.println(eventsListFragment.toString());
+            
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
             transaction.add(R.id.mainpage_fragment_container, eventsListFragment);
@@ -70,17 +72,19 @@ public class MainActivity extends FragmentActivity
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
-        }
-        if (id == R.id.home_button) {
+        } else if (id == R.id.home_button) {
             Intent mainActivityIntent = new Intent(this, MainActivity.class);
             startActivityForResult(mainActivityIntent, 0);
             return true;
-        }
-        if (id == R.id.friends_button) {
+        } else if (id == R.id.friends_button) {
             Intent mainActivityIntent = new Intent(this, FriendsActivity.class);
             startActivityForResult(mainActivityIntent, 0);
             return true;
-        }
+        } else if (id == R.id.gifts_button) {
+        	Intent mainActivityIntent = new Intent(this, GiftsActivity.class);
+            startActivityForResult(mainActivityIntent, 0);
+            return true;
+		}
         return super.onOptionsItemSelected(item);
     }
 

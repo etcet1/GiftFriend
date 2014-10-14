@@ -10,7 +10,7 @@ import android.widget.ListView;
 import com.exam.giftfriend.EventsData;
 import com.exam.giftfriend.R;
 
-public class EventsListFragment extends ListFragment {
+public class MainPageFragment extends ListFragment {
     OnEventSelectedListener mCallback;
 
     public interface OnEventSelectedListener {

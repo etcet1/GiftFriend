@@ -32,13 +32,14 @@ public class SQLiteContext extends SQLiteOpenHelper {
     private static final String TABLE_GIFTS = "gifts";
 
     // Common column names
-    private static final String KEY_ID = "id";
+    private static final String KEY_ID = "_id";
     private static final String KEY_TAG_NAME = "name";
     // friends table Create Statements
     private static final String CREATE_TABLE_FIRENDS = "CREATE TABLE "
             + TABLE_FRIENDS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_TAG_NAME
             + " TEXT,)";
     private static final String KEY_CREATED_AT = "created_at";
+    
     // GIFTS Table - column names
     private static final String KEY_STATUS = "status";
     private static final String KEY_TAG_LOCATION = "location";

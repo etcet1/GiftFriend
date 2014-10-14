@@ -31,6 +31,10 @@
             android:name=".FriendsActivity"
             android:label="@string/title_activity_friends" >
         </activity>
+        <activity
+            android:name=".GiftsActivity"
+            android:label="@string/title_activity_gifts" >
+        </activity>
     </application>
 
 </manifest>

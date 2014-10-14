@@ -12,5 +12,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_friends">Friends</string>
     <string name="hello_world">Hello world!</string>
-
+	<string name="title_activity_gifts">Gifts</string>
+	<string name="my_gifts">My Gifts</string>
+	<string name="public_gifts">Public Gifts</string>
+	<string name = "add_gift">Add Gift</string>
 </resources>
