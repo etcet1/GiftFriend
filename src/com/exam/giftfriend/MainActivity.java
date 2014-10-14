@@ -1,36 +1,35 @@
 package com.exam.giftfriend;
 
-import android.app.Activity;
-import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.exam.giftfriend.fragments.MainPageFragment;
+import com.exam.giftfriend.fragments.EventFragment;
+import com.exam.giftfriend.fragments.EventsListFragment;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity
+        implements EventsListFragment.OnEventSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         if (findViewById(R.id.mainpage_fragment_container) != null) {
-
             if (savedInstanceState != null) {
                 return;
             }
 
-            // Create an instance of ExampleFragment
-            MainPageFragment firstFragment = new MainPageFragment();
+            EventsListFragment eventsListFragment = new EventsListFragment();
+            eventsListFragment.setArguments(getIntent().getExtras());
 
-            // In case this activity was started with special instructions from an Intent,
-            // pass the Intent's extras to the fragment as arguments
-            firstFragment.setArguments(getIntent().getExtras());
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-            // Add the fragment to the 'fragment_container' FrameLayout
-            getFragmentManager().beginTransaction()
-                    .add(R.id.mainpage_fragment_container, (Fragment)firstFragment).commit();
+            transaction.add(R.id.mainpage_fragment_container, eventsListFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
     }
 
@@ -39,6 +38,28 @@ public class MainActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    public void onEventSelected(int position) {
+        EventFragment eventFragment = (EventFragment)
+                getFragmentManager().findFragmentById(R.id.event);
+
+        if (eventFragment != null) {
+            eventFragment.updateEventView(position);
+        } else {
+            EventFragment newEventFragment = new EventFragment();
+            Bundle args = new Bundle();
+            args.putInt(EventFragment.ARG_POSITION, position);
+            newEventFragment.setArguments(args);
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            //TODO fix this buggy behaviour - switched to getFragmentManager in order to work
+            transaction.replace(R.id.mainpage_fragment_container, newEventFragment);
+            transaction.addToBackStack(null);
+
+            // Commit the transaction
+            transaction.commit();
+        }
     }
 
     @Override
@@ -50,7 +71,25 @@ public class MainActivity extends Activity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.home_button) {
+            Intent mainActivityIntent = new Intent(this, MainActivity.class);
+            startActivityForResult(mainActivityIntent, 0);
+            return true;
+        }
+        if (id == R.id.friends_button) {
+            Intent mainActivityIntent = new Intent(this, FriendsActivity.class);
+            startActivityForResult(mainActivityIntent, 0);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            // Default action on back pressed
+            super.onBackPressed();
+        }
+    }
 }

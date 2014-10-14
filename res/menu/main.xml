@@ -3,14 +3,13 @@
 
     <item android:id="@+id/action_settings" android:orderInCategory="100"
         android:showAsAction="never" android:title="@string/action_settings" />
-    <item android:id="@+id/home_button" android:icon="@dra"
-        android:showAsAction="always" android:title="@string/friendsList"
-        android:titleCondensed="@string/home"></item>
+    <item android:id="@+id/home_button" android:icon="@drawable/ic_menu_home" android:showAsAction="always"
+        android:title="@string/friendsList" android:titleCondensed="@string/home" />
     <item android:id="@+id/friends_button" android:icon="@drawable/ic_menu_friendslist"
         android:showAsAction="always" android:title="@string/friendsList"
-        android:titleCondensed="@string/friendsList_condensed"></item>
+        android:titleCondensed="@string/friendsList_condensed" />
     <item android:id="@+id/gifts_button" android:icon="@drawable/ic_menu_find"
         android:showAsAction="always" android:title="@string/giftsList"
-        android:titleCondensed="@string/giftsList_condensed"></item>
+        android:titleCondensed="$string/friendsList_condensed" />
 
 </menu>
