@@ -1,54 +1,70 @@
 package com.exam.giftfriend.sqlite.models;
 
+import android.R.integer;
+
 public class Gift {
 
-    private int id;
-    private String name;
-    private int status;
-    private String created;
-    private String location;
+	private int id;
+	private String name;
+	private int caegory_id;
+	private int status;
+	private String created;
+	private String location;
 
-    public Gift() {
-    }
+	public Gift() {
+	}
 
-    public Gift(String name, int status) {
-        this.setName(name);
-        this.setStatus(status);
-    }
+	public Gift(String name, int caegory_id) {
+		this.setName(name);
+		this.setCategory(caegory_id);
+	}
 
-    public Gift(int id, String name, int status, String location) {
-        this.setId(id);
-        this.setName(name);
-        this.setStatus(status);
-    }
+	public Gift(int id, String name, int category_id, String location) {
+		this.setId(id);
+		this.setName(name);
+		this.setCategory(category_id);
+		this.setLocation(location);
+	}
 
-    // setters
-    public void setId(int id) {
-        this.id = id;
-    }
+	// setters
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+	public void setCategory(int category_id) {
+		this.caegory_id = category_id;
+	}
 
-    public void setCreatedAt(String created){
-        this.created = created;
-    }
+	public void setCreatedAt(String created) {
+		this.created = created;
+	}
+	
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
-    // getters
-    public long getId() {
-        return this.id;
-    }
+	// getters
+	public long getId() {
+		return this.id;
+	}
 
-    public String getName() {
-        return this.name;
-    }
+	public String getName() {
+		return this.name;
+	}
+	
+	public String getLocation(){
+		return this.location;
+	}
 
-    public int getStatus() {
-        return this.status;
-    }
+	public int getCategoryId() {
+		return this.caegory_id;
+	}
+	
+	public int getStatus() {
+		return this.status;
+	}
 }
