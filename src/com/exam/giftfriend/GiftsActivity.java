@@ -1,20 +1,36 @@
 package com.exam.giftfriend;
 
 import com.exam.giftfriend.fragments.EventsListFragment;
+import com.exam.giftfriend.sqlite.SQLiteRepo;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.Toast;
 
-public class GiftsActivity  extends Activity{
+public class GiftsActivity  extends Activity implements OnClickListener{
 	
+	Button btnShowMine;
+	Button btnShowAll;
+	Button btnAdd;
+		
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gifts);
+        
+        btnShowMine = (Button)findViewById(R.id.btn_my_gifts);
+        btnShowAll = (Button)findViewById(R.id.btn_public_gifts);
+        btnAdd = (Button)findViewById(R.id.btn_add_gift);
+        btnAdd.setOnClickListener(this);
+        
     }
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -30,21 +46,21 @@ public class GiftsActivity  extends Activity{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-        	Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
+        	//Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.home_button) {
-        	Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
+        	///Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
             Intent mainActivityIntent = new Intent(this, MainActivity.class);
             startActivityForResult(mainActivityIntent, 0);
             return true;
         } else if (id == R.id.friends_button) {
-        	Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
+        	//Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
             Intent mainActivityIntent = new Intent(this, FriendsActivity.class);
             startActivityForResult(mainActivityIntent, 0);
             return true;
         } else if (id == R.id.gifts_button) {
-        	//Intent mainActivityIntent = new Intent(this, GiftsActivity.class);
-            //startActivityForResult(mainActivityIntent, 0);
+        	Intent mainActivityIntent = new Intent(this, GiftsActivity.class);
+            startActivityForResult(mainActivityIntent, 0);
             return true;
 		}
         return super.onOptionsItemSelected(item);
@@ -58,5 +74,14 @@ public class GiftsActivity  extends Activity{
             super.onBackPressed();
         }
     }
-	
+    
+    public void onClick(View v) {
+		//btn_my_gifts -> show all gifts from SQLite
+		//btn_public_gifts -> show all gifts from public base
+		//btn_add_gift -> add gift in SQLite
+    	if (v.getId() == R.id.btn_add_gift) {
+			AddGiftDialogFragment dialogFragment = new AddGiftDialogFragment();
+			dialogFragment.show(getFragmentManager(), "BOO");
+		}
+	}
 }

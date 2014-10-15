@@ -31,17 +31,17 @@ public class FriendsActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-        	Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
+        	//Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.home_button) {
-        	Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
+        	//Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
             Intent mainActivityIntent = new Intent(this, MainActivity.class);
             startActivityForResult(mainActivityIntent, 0);
             return true;
         } else if (id == R.id.friends_button) {
-        	Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
-            //Intent mainActivityIntent = new Intent(this, FriendsActivity.class);
-            //startActivityForResult(mainActivityIntent, 0);
+        	//Toast.makeText(this, "Clicked!" + id, Toast.LENGTH_SHORT).show();
+            Intent mainActivityIntent = new Intent(this, FriendsActivity.class);
+            startActivityForResult(mainActivityIntent, 0);
             return true;
         }else if (id == R.id.gifts_button) {
         	Intent mainActivityIntent = new Intent(this, GiftsActivity.class);
