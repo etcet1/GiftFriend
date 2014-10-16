@@ -1,14 +1,11 @@
 package com.exam.giftfriend.sqlite;
 
-import static com.exam.giftfriend.sqlite.SQLiteContext.LOG;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import android.R.string;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -19,7 +16,8 @@ import com.exam.giftfriend.sqlite.models.Friend;
 import com.exam.giftfriend.sqlite.models.Gift;
 
 public class SQLiteRepo extends SQLiteContext{
-
+	private static final String LOG_STRING = "SQLiteRepo";
+	
 	public SQLiteRepo(Context context) {
 		super(context);
 	}
@@ -51,12 +49,12 @@ public class SQLiteRepo extends SQLiteContext{
         String selectQuery = "SELECT * FROM " + GiftsTable.TABLE_GIFTS + " WHERE "
                 + GiftsTable.COLUMN_ID + " = " + gift_id;
 
-        Log.e(LOG, selectQuery);
+        Log.i(LOG_STRING, selectQuery);
 
         Cursor c = db.rawQuery(selectQuery, null);
 
-        if (c != null) {
-            c.moveToFirst();
+        if (c.moveToFirst() == false) {
+        	return null;
         }
 
         Gift gift = new Gift();
@@ -74,7 +72,7 @@ public class SQLiteRepo extends SQLiteContext{
         List<Gift> gifts = new ArrayList<Gift>();
         String selectQuery = "SELECT  * FROM " + GiftsTable.TABLE_GIFTS;
 
-        Log.e(LOG, selectQuery);
+        Log.i(LOG_STRING, selectQuery);
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
@@ -144,7 +142,7 @@ public class SQLiteRepo extends SQLiteContext{
         List<Friend> friends = new ArrayList<Friend>();
         String selectQuery = "SELECT  * FROM " + FriendsTable.TABLE_FRIENDS;
 
-        Log.e(LOG, selectQuery);
+        Log.i(LOG_STRING, selectQuery);
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
@@ -165,17 +163,14 @@ public class SQLiteRepo extends SQLiteContext{
 	public Friend getFriendByName(String name) {
     	SQLiteDatabase db = this.getReadableDatabase();
 
-        String selectQuery = "SELECT * FROM " + FriendsTable.TABLE_FRIENDS + " WHERE "
-                + FriendsTable.COLUMN_NAME + " = " + name;
+        String selectQuery = "SELECT  * FROM " + FriendsTable.TABLE_FRIENDS + " WHERE "
+                + "'" + name + "'" + " = " + FriendsTable.COLUMN_NAME;
 
-        Log.e(LOG, selectQuery);
+        Log.i(LOG_STRING, selectQuery);
 
         Cursor c = db.rawQuery(selectQuery, null);
 
-        if (c != null) {
-            c.moveToFirst();
-        }
-        else {
+        if (c.moveToFirst() == false){        
         	return null;
         }
 

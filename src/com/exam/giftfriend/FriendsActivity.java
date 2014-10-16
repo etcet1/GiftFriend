@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +37,7 @@ public class FriendsActivity extends BaseActivity implements OnClickListener{
         importBtn = (Button)this.findViewById(R.id.btn_import_contacts);
         addBtn = (Button)this.findViewById(R.id.btn_add_new);
         
-        contactsView.append(getAllFriendsToString(friendsEntry));
+        contactsView.setText(getAllFriendsToString(friendsEntry));
         
         importBtn.setOnClickListener(this);
         addBtn.setOnClickListener(this);
@@ -91,13 +92,14 @@ public class FriendsActivity extends BaseActivity implements OnClickListener{
 	public void onClick(View v) {
 		if(v.getId() == R.id.btn_import_contacts) {
 			recordContactsInDatabase(friendsEntry);
-			contactsView.append(getAllFriendsToString(friendsEntry));
-		}
-		else if(v.getId() == R.id.btn_add_new) {
+			contactsView.setText(getAllFriendsToString(friendsEntry));
+		} else if(v.getId() == R.id.btn_add_new) {
+			AddFriendDialogFragment dialogFragment = new AddFriendDialogFragment();
+			dialogFragment.show(getFragmentManager(), "friendFragment");
 			//TODO implementation with dialog fragment
-			Friend newFriend = new Friend("Stamat");
-			friendsEntry.createFriend(newFriend);
-			contactsView.append(newFriend.getName());
+			//Friend newFriend = new Friend("Stamat");
+			//friendsEntry.createFriend(newFriend);
+			//contactsView.append(newFriend.getName());
 		}
 	}
 }
