@@ -2,15 +2,16 @@ package com.exam.giftfriend;
 
 import java.util.List;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+<<<<<<< HEAD
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+=======
+>>>>>>> 6c1a1b7659c8d97bfa01a501e076813c5580b95c
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -62,8 +63,10 @@ public class FriendsActivity extends BaseActivity implements OnClickListener{
 	private Cursor getContacts() {
 	    // Run query
 	    Uri uri = ContactsContract.Contacts.CONTENT_URI;
-	    String[] projection = new String[] { ContactsContract.Contacts._ID,
-	        ContactsContract.Contacts.DISPLAY_NAME };
+	    String[] projection = new String[] { 
+	    	ContactsContract.Contacts._ID,
+	        ContactsContract.Contacts.DISPLAY_NAME 
+	        };
 	    String selection = ContactsContract.Contacts.IN_VISIBLE_GROUP + " = '"
 	        + ("1") + "'";
 	    String[] selectionArgs = null;
@@ -71,8 +74,10 @@ public class FriendsActivity extends BaseActivity implements OnClickListener{
 	        + " COLLATE LOCALIZED ASC";
 
 	    
-	    return managedQuery(uri, projection, selection, selectionArgs,
-	        sortOrder);
+//	    return managedQuery(uri, projection, selection, selectionArgs,
+//	        sortOrder);
+	    return getApplicationContext().getContentResolver().query(uri, projection, null, selectionArgs,
+	            sortOrder);
     }
 
 	private String getAllFriendsToString(SQLiteRepo entry) {
