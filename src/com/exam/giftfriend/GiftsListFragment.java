@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.exam.giftfriend.sqlite.SQLiteRepo;
 import com.exam.giftfriend.sqlite.models.Gift;
@@ -19,11 +20,14 @@ public class GiftsListFragment extends Fragment {
 	protected void initializeList(View view) {
 		SQLiteRepo repo = new SQLiteRepo(getActivity());
 		List<Gift> products = repo.getAllGifts();
-		
-		ListView listView = (ListView) view.findViewById(R.id.listViewGifts);
-		GiftsAdapter adapter = new GiftsAdapter(getActivity(),
-				R.layout.fragment_gifts_list_row, products);
-		listView.setAdapter(adapter);
+		if(products.size() != 0){
+			ListView listView = (ListView) view.findViewById(R.id.listViewGifts);
+			GiftsAdapter adapter = new GiftsAdapter(getActivity(),
+					R.layout.fragment_gifts_list_row, products);
+			listView.setAdapter(adapter);
+		} else {
+			Toast.makeText(getActivity(), "You have no personal gifts.", Toast.LENGTH_LONG).show();
+		}
 		// listView.setOnClickListener(this);
 	}
 
