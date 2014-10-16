@@ -163,26 +163,15 @@ public class SQLiteRepo extends SQLiteContext{
 	public Friend getFriendByName(String name) {
     	SQLiteDatabase db = this.getReadableDatabase();
 
-<<<<<<< HEAD
         String selectQuery = "SELECT  * FROM " + FriendsTable.TABLE_FRIENDS + " WHERE "
                 + "'" + name + "'" + " = " + FriendsTable.COLUMN_NAME;
-=======
-        String selectQuery = "SELECT * FROM " + FriendsTable.TABLE_FRIENDS + " WHERE "
-                + FriendsTable.COLUMN_NAME + " = '" + name + "'";
->>>>>>> 6c1a1b7659c8d97bfa01a501e076813c5580b95c
 
         Log.i(LOG_STRING, selectQuery);
 
         Cursor c = db.rawQuery(selectQuery, null);
 
-<<<<<<< HEAD
-        if (c.moveToFirst() == false){        
-=======
-        if (c.getCount() > 0) {
-            c.moveToFirst();
-        }
-        else {
->>>>>>> 6c1a1b7659c8d97bfa01a501e076813c5580b95c
+        if (c.moveToFirst() == false){       
+
         	return null;
         }
 
