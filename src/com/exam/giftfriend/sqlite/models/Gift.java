@@ -18,6 +18,11 @@ public class Gift {
 		this.setName(name);
 		this.setCategory(caegory_id);
 	}
+	
+	public Gift(String name, String location) {
+		this.setName(name);
+		this.setLocation(location);
+	}
 
 	public Gift(int id, String name, int category_id, String location) {
 		this.setId(id);

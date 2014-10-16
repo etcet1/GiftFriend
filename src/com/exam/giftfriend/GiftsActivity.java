@@ -66,22 +66,25 @@ public class GiftsActivity  extends Activity implements OnClickListener{
         return super.onOptionsItemSelected(item);
     }
 
-    public void onBackPressed() {
+    /*public void onBackPressed() {
         if (getFragmentManager().getBackStackEntryCount() > 0) {
             getFragmentManager().popBackStack();
         } else {
             // Default action on back pressed
             super.onBackPressed();
         }
-    }
+    }*/
     
     public void onClick(View v) {
 		//btn_my_gifts -> show all gifts from SQLite
 		//btn_public_gifts -> show all gifts from public base
 		//btn_add_gift -> add gift in SQLite
-    	if (v.getId() == R.id.btn_add_gift) {
+    	int id = v.getId();
+    	if (id == R.id.btn_add_gift) {
 			AddGiftDialogFragment dialogFragment = new AddGiftDialogFragment();
 			dialogFragment.show(getFragmentManager(), "BOO");
+		} else if(id == R.id.btn_my_gifts){
+			
 		}
 	}
 }

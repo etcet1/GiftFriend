@@ -14,7 +14,7 @@ public class GiftsTable {
 	private static final String DATABASE_CREATE = "create table " + TABLE_GIFTS
 			+ "(" + COLUMN_ID + " integer primary key autoincrement, "
 			+ COLUMN_NAME + " text not null, " + COLUMN_SHOP + " text, "
-			+ COLUMN_CATEGORY_ID + " text, " + ");";
+			+ COLUMN_CATEGORY_ID + " text);";
 
 	public static void onCreate(SQLiteDatabase database) {
 		database.execSQL(DATABASE_CREATE);

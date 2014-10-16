@@ -13,7 +13,7 @@ public class FriendGiftTable {
 	private static final String DATABASE_CREATE = "create table " + TABLE_FRIEND_GIFT
 			+ "(" + COLUMN_ID + " integer primary key autoincrement, "
 			+ COLUMN_FRIEND_ID + " integer not null, "
-			+ COLUMN_GIFT_ID + " integer not null, " + ");";
+			+ COLUMN_GIFT_ID + " integer not null);";
 
 	public static void onCreate(SQLiteDatabase database) {
 		database.execSQL(DATABASE_CREATE);

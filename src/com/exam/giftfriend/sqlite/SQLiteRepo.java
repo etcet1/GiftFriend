@@ -33,7 +33,7 @@ public class SQLiteRepo extends SQLiteContext{
         ContentValues values = new ContentValues();
         values.put(GiftsTable.COLUMN_NAME, gift.getName());
         values.put(GiftsTable.COLUMN_SHOP, gift.getLocation());
-        values.put(GiftsTable.COLUMN_CATEGORY_ID, gift.getCategoryId());
+        //values.put(GiftsTable.COLUMN_CATEGORY_ID, gift.getCategoryId());
         
         // values.put(KEY_CREATED_AT, getDateTime());
 
@@ -45,7 +45,7 @@ public class SQLiteRepo extends SQLiteContext{
     /**
      * get single gift
      */
-    public Gift getGift(string gift_id) {
+    public Gift getGift(int gift_id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String selectQuery = "SELECT  * FROM " + GiftsTable.TABLE_GIFTS + " WHERE "
