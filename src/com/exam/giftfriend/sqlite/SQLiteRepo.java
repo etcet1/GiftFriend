@@ -48,7 +48,7 @@ public class SQLiteRepo extends SQLiteContext{
     public Gift getGift(int gift_id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String selectQuery = "SELECT  * FROM " + GiftsTable.TABLE_GIFTS + " WHERE "
+        String selectQuery = "SELECT * FROM " + GiftsTable.TABLE_GIFTS + " WHERE "
                 + GiftsTable.COLUMN_ID + " = " + gift_id;
 
         Log.e(LOG, selectQuery);
@@ -85,7 +85,7 @@ public class SQLiteRepo extends SQLiteContext{
                 Gift gift = new Gift();
                 gift.setId(c.getInt(c.getColumnIndex(GiftsTable.COLUMN_ID)));
                 gift.setName((c.getString(c.getColumnIndex(GiftsTable.COLUMN_NAME))));
-                //gift.setCreatedAt(c.getString(c.getColumnIndex(KEY_CREATED_AT)));
+                gift.setLocation(c.getString(c.getColumnIndex(GiftsTable.COLUMN_SHOP)));
 
                 gifts.add(gift);
             } while (c.moveToNext());
@@ -98,7 +98,7 @@ public class SQLiteRepo extends SQLiteContext{
      * get todo count
      */
     public int getGiftsCount() {
-        String countQuery = "SELECT  * FROM " + GiftsTable.TABLE_GIFTS;
+        String countQuery = "SELECT * FROM " + GiftsTable.TABLE_GIFTS;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
 
@@ -140,7 +140,7 @@ public class SQLiteRepo extends SQLiteContext{
     /**
      * getting all friends
      */
-    public List<Friend> getAllTags() {
+    public List<Friend> getAllFriends() {
         List<Friend> friends = new ArrayList<Friend>();
         String selectQuery = "SELECT  * FROM " + FriendsTable.TABLE_FRIENDS;
 
@@ -161,6 +161,30 @@ public class SQLiteRepo extends SQLiteContext{
         }
         return friends;
     }
+	
+	public Friend getFriendByName(String name) {
+    	SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + FriendsTable.TABLE_FRIENDS + " WHERE "
+                + FriendsTable.COLUMN_NAME + " = " + name;
+
+        Log.e(LOG, selectQuery);
+
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c != null) {
+            c.moveToFirst();
+        }
+        else {
+        	return null;
+        }
+
+        Friend existingFriend = new Friend();
+        existingFriend.setName(c.getString(c.getColumnIndex(FriendsTable.COLUMN_NAME)));
+
+        return existingFriend;
+    }
+
 
     // closing database
     public void closeDB() {

@@ -2,4 +2,33 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/firends_fragment_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent">
+    
+	<TextView
+		android:id="@+id/view_contacts"
+		android:layout_width="match_parent"
+		android:layout_height="fill_parent" >
+	</TextView>
+	<LinearLayout
+	    android:layout_height="wrap_content"
+	    android:layout_width="match_parent"
+	    android:layout_gravity="bottom">
+	    
+        <Button
+            android:id="@+id/btn_import_contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/add_from_contact" 
+            style = "@style/customBtnColor"/>
+
+        <Button
+            android:id="@+id/btn_add_new"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/add_new_friend" 
+            style = "@style/customBtnColor"/>
+	</LinearLayout>
+    
+</FrameLayout>

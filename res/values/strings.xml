@@ -20,4 +20,6 @@
 	<string name="giftLocation">Where to find</string>
 	<string name="cancel">Cansel</string>
 	<string name="createGift">Create new Gift</string>
+	<string name="add_from_contact">Import contacts</string>
+	<string name="add_new_friend">Add new</string>
 </resources>
