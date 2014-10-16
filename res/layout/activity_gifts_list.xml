@@ -9,7 +9,7 @@
 	    android:orientation="vertical" >
 	    
 		    <fragment
-		        android:name="com.example.androidfragments.BriefInfoFragment"
+		        android:name="com.exam.giftfriend.GiftsListFragment"
 		        android:id="@+id/fragment_place"
 		   		android:layout_width="match_parent"
 		   		android:layout_height="match_parent" />

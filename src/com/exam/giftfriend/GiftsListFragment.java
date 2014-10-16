@@ -12,7 +12,7 @@ import android.widget.ListView;
 import com.exam.giftfriend.sqlite.SQLiteRepo;
 import com.exam.giftfriend.sqlite.models.Gift;
 
-public class GifttsListFragment extends Fragment {
+public class GiftsListFragment extends Fragment {
 	
 	//protected ArrayList<Gift> products = new ArrayList<Gift>();
 
