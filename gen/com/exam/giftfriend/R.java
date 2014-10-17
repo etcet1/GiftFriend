@@ -85,6 +85,7 @@ public final class R {
         public static final int cancel=0x7f070012;
         public static final int createFriend=0x7f070017;
         public static final int createGift=0x7f070013;
+        public static final int errorCreate=0x7f070018;
         public static final int friendName=0x7f070016;
         public static final int friendsList=0x7f070004;
         public static final int friendsList_condensed=0x7f070005;

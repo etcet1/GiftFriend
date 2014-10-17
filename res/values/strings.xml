@@ -25,4 +25,5 @@
 	<string name="add_new_friend">Add new</string>
 	<string name="friendName">Friend Name</string>
 	<string name="createFriend">Add new friend</string>
+	<string name="errorCreate">The name can not be blank!</string>
 </resources>

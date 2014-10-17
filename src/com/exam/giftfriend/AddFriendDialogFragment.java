@@ -48,7 +48,9 @@ public class AddFriendDialogFragment extends DialogFragment{
 											"Added: friendId = " + giftId,
 											Toast.LENGTH_LONG).show();
 								} catch (IllegalArgumentException e) {
-									Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
+									ErrorDialogFragment dialogFragment = new ErrorDialogFragment();
+									dialogFragment.show(getFragmentManager(), "errorFragment");
+									//Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
 								} catch (Exception e) {
 									Log.e("ErrorGift", e.getMessage(), e);
 									e.printStackTrace();
