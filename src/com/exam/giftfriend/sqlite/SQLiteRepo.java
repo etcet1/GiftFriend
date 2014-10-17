@@ -166,13 +166,13 @@ public class SQLiteRepo extends SQLiteContext{
     	SQLiteDatabase db = this.getReadableDatabase();
 
         String selectQuery = "SELECT * FROM " + FriendsTable.TABLE_FRIENDS + " WHERE "
-                + FriendsTable.COLUMN_NAME + " = " + name;
+                + FriendsTable.COLUMN_NAME + " = '" + name + "'";
 
         Log.e(LOG, selectQuery);
 
         Cursor c = db.rawQuery(selectQuery, null);
 
-        if (c != null) {
+        if (c.getCount() > 0) {
             c.moveToFirst();
         }
         else {
