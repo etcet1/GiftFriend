@@ -23,11 +23,13 @@ public class AddGiftDialogFragment extends DialogFragment {
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		// Get the layout inflater
 		LayoutInflater inflater = getActivity().getLayoutInflater();
-		View customView = inflater.inflate(R.layout.dialog_fragment_add_gift, null, false);
-		final EditText giftName = (EditText)customView.findViewById(R.id.edt_giftName);
-		final EditText giftLocation = (EditText) customView.findViewById(R.id.edt_giftLocation);
+		View customView = inflater.inflate(R.layout.dialog_fragment_add_gift,
+				null, false);
+		final EditText giftName = (EditText) customView
+				.findViewById(R.id.edt_giftName);
+		final EditText giftLocation = (EditText) customView
+				.findViewById(R.id.edt_giftLocation);
 
-		
 		// Inflate and set the layout for the dialog
 		// Pass null as the parent view because its going in the dialog layout
 		builder.setView(customView)
@@ -36,9 +38,10 @@ public class AddGiftDialogFragment extends DialogFragment {
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int id) {
-								try {	
-									
-									SQLiteRepo repo = new SQLiteRepo(getActivity());
+								try {
+
+									SQLiteRepo repo = new SQLiteRepo(
+											getActivity());
 									String name = giftName.getText().toString();
 									String location = giftLocation.getText()
 											.toString();
@@ -48,9 +51,10 @@ public class AddGiftDialogFragment extends DialogFragment {
 									Toast.makeText(getActivity(),
 											"Added; giftId = " + giftId,
 											Toast.LENGTH_LONG).show();
+								} catch (IllegalArgumentException e) {
+									Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
 								} catch (Exception e) {
 									Log.e("ErrorGift", e.getMessage(), e);
-
 									e.printStackTrace();
 								}
 							}
@@ -60,8 +64,7 @@ public class AddGiftDialogFragment extends DialogFragment {
 							public void onClick(DialogInterface dialog, int id) {
 								// LoginDialogFragment.this.getDialog().cancel();
 							}
-						})
-				.setTitle(R.string.createGift);
+						}).setTitle(R.string.createGift);
 		return builder.create();
 	}
 }

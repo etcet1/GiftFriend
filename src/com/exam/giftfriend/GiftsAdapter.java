@@ -6,13 +6,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.exam.giftfriend.sqlite.models.Gift;
 
-public class GiftsAdapter extends ArrayAdapter<Gift>{
+public class GiftsAdapter extends ArrayAdapter<Gift> implements OnClickListener{
 	private Context context;
 	private int layoutId;
 	private List<Gift> data;
@@ -33,9 +35,14 @@ public class GiftsAdapter extends ArrayAdapter<Gift>{
 		
 		TextView giftLocation = (TextView)rowView.findViewById(R.id.gift_location);
 		giftLocation.setText(data.get(position).getLocation());
-				
+		
+		rowView.setOnClickListener(this);
+		
 		return rowView;
 	}
-
 	
+	public void onClick(View v) {
+		Toast.makeText(getContext(), "Clicked: " + v.getId(), Toast.LENGTH_LONG).show();
+	}
+		
 }
